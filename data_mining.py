@@ -31,9 +31,6 @@ def get_players_info(driver):
 
 def get_win_loss_stats(driver):
     win_loss_stats = driver.find_elements(By.CLASS_NAME, 'mega-table')
-
-
-    #win_loss_stats = driver.find_elements(By.CLASS_NAME, 'mega-table')
     win_loss_info = []
     for stat in win_loss_stats:
         info = {'Name': stat.find_element(By.CLASS_NAME, "player-cell").text,
@@ -45,38 +42,27 @@ def get_win_loss_stats(driver):
         win_loss_info.append(info)
     return win_loss_info
 
+
 def main():
     driver = webdriver.Chrome()
-    # driver.get("https://www.atptour.com/en/rankings/singles")
-    # for player in get_players_info(driver):
-    #     print(player)
 
+    # First webpage
+    driver.get("https://www.atptour.com/en/rankings/singles")
+    for player in get_players_info(driver):
+        print(player)
+
+    # Second webpage
     driver.get("https://www.atptour.com/en/stats/win-loss-index")
-
     try:
-        table = WebDriverWait(driver, 30).until(
+        WebDriverWait(driver, 30).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '#winLossTableList > div > table'))
             )
     except:
         driver.quit()
-
     for win_lost_stat in get_win_loss_stats(driver):
         print(win_lost_stat)
-
     driver.quit()
+
 
 if __name__ == '__main__':
     main()
-    # link = driver.find_element_by_link_text("STATS")
-    # link.click()
-    #
-    # try:
-    #     element = WebDriverWait(driver, 10).until(
-    #         EC.presence_of_element_located((By.LINK_TEXT, "Win/Loss"))
-    #     )
-    #     element.click()
-    # except None:
-    #     driver.quit()
-    #
-    # driver.quit()
-
