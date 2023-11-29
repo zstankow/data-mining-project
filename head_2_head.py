@@ -1,17 +1,47 @@
-import requests
-from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
-user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"
-
-url = "https://www.ultimatetennisstatistics.com/headToHead"
-
-headers = {"User-Agent": user_agent}
+import time
 
 
-response = requests.get(url)
+def head_2_head(player1, player2):
+    driver = webdriver.Chrome()
+    driver.get("https://www.ultimatetennisstatistics.com/headToHead")
+    player1_input = driver.find_element(By.ID, "player1")
+    player1_input.send_keys(player1)
+    time.sleep(2)
+    suggestion = driver.find_element(By.CLASS_NAME, "ui-menu-item-wrapper")
+    suggestion.click()
 
-if response.status_code == 200:
-    soup = BeautifulSoup(response.content, "html.parser")
-    print(soup)
-else:
-    print("Failed to fetch the page.")
+    player2_input = driver.find_element(By.ID, "player2")
+    player2_input.send_keys(player2)
+    time.sleep(2)
+    suggestion = driver.find_element(By.CLASS_NAME, "ui-menu-item-wrapper")
+    suggestion.click()
+    print_stats(driver)
+
+
+def print_stats(driver):
+    p1 = driver.find_element(By.CLASS_NAME, "text-left").text
+    p2 = driver.find_element(By.CLASS_NAME, "text-right").text
+
+    w1 = driver.find_element(By.CLASS_NAME, "progress-bar.progress-bar-perf-w").text
+    w2 = driver.find_element(By.CLASS_NAME, "progress-bar.progress-bar-perf-l").text
+
+    print(p1, p2)
+    print(w1, w2)
+
+
+def menu():
+    print("\n *** WELCOME TO HEAD 2 HEAD *** \n")
+    player1_name = input("Please, enter Player 1 : ")
+    player2_name = input("Please, enter Player 2 : ")
+    head_2_head(player1_name, player2_name)
+
+
+def main():
+    menu()
+
+
+if __name__ == "__main__":
+    main()
