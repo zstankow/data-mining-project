@@ -1,23 +1,42 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
 import time
+from tennis_logger import logger
 
 
 def head_2_head(player1, player2):
     driver = webdriver.Chrome()
-    driver.get("https://www.ultimatetennisstatistics.com/headToHead")
-    player1_input = driver.find_element(By.ID, "player1")
-    player1_input.send_keys(player1)
-    time.sleep(2)
-    suggestion = driver.find_element(By.CLASS_NAME, "ui-menu-item-wrapper")
-    suggestion.click()
+    head2head_url = "https://www.ultimatetennisstatistics.com/headToHead"
+    try:
+        driver.get(head2head_url)
+        logger.info(f"Successfully fetched URL: {head2head_url}")
+    except Exception as e:
+        logger.error(f"{e}: Failed to fetch URL: {head2head_url}")
 
-    player2_input = driver.find_element(By.ID, "player2")
-    player2_input.send_keys(player2)
-    time.sleep(2)
-    suggestion = driver.find_element(By.CLASS_NAME, "ui-menu-item-wrapper")
-    suggestion.click()
+    try:
+        player1_input = driver.find_element(By.ID, "player1")
+        player1_input.send_keys(player1)
+        time.sleep(2)
+        suggestion = driver.find_element(By.CLASS_NAME, "ui-menu-item-wrapper")
+        suggestion.click()
+        logger.info(f"Successfully fetched information on player 1: {player1}")
+    except Exception as e:
+        logger.error(f"{e}: Failed to fetch information on player 1: {player1}")
+        print(f"Player '{player1}' does not exist")
+        return
+
+    try:
+        player2_input = driver.find_element(By.ID, "player2")
+        player2_input.send_keys(player2)
+        time.sleep(2)
+        suggestion = driver.find_element(By.CLASS_NAME, "ui-menu-item-wrapper")
+        suggestion.click()
+        logger.info(f"Successfully fetched information on player 2: {player2}")
+    except Exception as e:
+        logger.info(f"{e}: Failed to fetch information on player 2: {player2}")
+        print(f"Player '{player2}' does not exist")
+        return
+
     print_stats(driver)
 
 

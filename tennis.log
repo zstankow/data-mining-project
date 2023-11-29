@@ -1,0 +1,11 @@
+2023-11-29 21:48:12,066 - INFO - Successfully fetched URL: https://www.ultimatetennisstatistics.com/headToHead
+2023-11-29 21:48:14,808 - INFO - Successfully fetched information on player 1: hey
+2023-11-29 21:48:17,658 - INFO - Successfully fetched information on player 2: you
+2023-11-29 21:48:50,783 - INFO - Successfully fetched URL: https://www.ultimatetennisstatistics.com/headToHead
+2023-11-29 21:48:52,911 - ERROR - Message: no such element: Unable to locate element: {"method":"css selector","selector":".ui-menu-item-wrapper"}
+  (Session info: chrome=119.0.6045.160)
+: Failed to fetch information on player 1: fjdksfsdjfh
+2023-11-29 21:49:58,190 - INFO - Successfully fetched URL: https://www.ultimatetennisstatistics.com/headToHead
+2023-11-29 21:50:00,285 - ERROR - Message: no such element: Unable to locate element: {"method":"css selector","selector":".ui-menu-item-wrapper"}
+  (Session info: chrome=119.0.6045.160)
+: Failed to fetch information on player 1: fdsfdsfsfs
