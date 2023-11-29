@@ -47,14 +47,14 @@ def main():
     driver = webdriver.Chrome()
 
     # First webpage
-    driver.get("https://www.atptour.com/en/rankings/singles")
-    for player in get_players_info(driver):
-        print(player)
+    # driver.get("https://www.atptour.com/en/rankings/singles")
+    # for player in get_players_info(driver):
+    #     print(player)
 
     # Second webpage
-    driver.get("https://www.atptour.com/en/stats/win-loss-index")
+    driver.get("https://www.ultimatetennisstatistics.com/rankingsTable")
     try:
-        WebDriverWait(driver, 30).until(
+        WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '#winLossTableList > div > table'))
             )
     except:
