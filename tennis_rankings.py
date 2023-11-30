@@ -8,6 +8,16 @@ from tabulate import tabulate
 
 
 def get_players_info(driver, display_num):
+    """
+    Fetches tennis player ranking information from a web page and returns tabulated data.
+
+    Args:
+        driver (WebDriver): The Selenium WebDriver instance for automated web browsing.
+        display_num (str): The desired number of displayed results.
+
+    Returns:
+        list: A list containing tabulated player data.
+    """
     try:
         # Clicking button responsible for number of display results.
         button = WebDriverWait(driver, 10).until(
@@ -43,6 +53,15 @@ def get_players_info(driver, display_num):
 
 
 def get_tabulated_data(player_rows):
+    """
+    Extracts and tabulates player information from a list of player rows.
+
+    Args:
+        player_rows (list): List of Selenium WebElement representing player rows.
+
+    Returns:
+        None: Prints the tabulated player information.
+    """
     players_info = []
     for row in player_rows:
         try:
@@ -68,6 +87,15 @@ def get_tabulated_data(player_rows):
 
 
 def verify_input(num):
+    """
+    Validates user input for the number of top tennis players' rankings to display.
+
+    Args:
+        num (str): The user-provided input for the number of players.
+
+    Returns:
+        str: The valid input for the number of top tennis players' rankings.
+    """
     while True:
         if num not in ['20', '50', '100']:
             print("Sorry, that is not a valid input.")
@@ -79,6 +107,12 @@ def verify_input(num):
 
 
 def menu():
+    """
+    Displays the ATP Rankings menu and retrieves user input for the number of players.
+
+    Returns:
+        str: The valid input for the number of top tennis players' rankings.
+    """
     print("\n *** ATP RANKINGS *** \n")
     num_display = verify_input(input("Please select the number of top tennis players' rankings you would "
                                      "like to display: 20, 50, or 100: "))
