@@ -9,3 +9,25 @@
 2023-11-29 21:50:00,285 - ERROR - Message: no such element: Unable to locate element: {"method":"css selector","selector":".ui-menu-item-wrapper"}
   (Session info: chrome=119.0.6045.160)
 : Failed to fetch information on player 1: fdsfdsfsfs
+2023-11-30 08:36:12,650 - INFO - Successfully fetched URL: https://www.ultimatetennisstatistics.com/rankingsTable
+2023-11-30 08:36:13,875 - INFO - Successfully fetched 20 rows from table.
+2023-11-30 08:36:13,970 - INFO - Successfully extracted information on ranked player number 1, player Novak Djokovic.
+2023-11-30 08:36:14,049 - INFO - Successfully extracted information on ranked player number 2, player Carlos Alcaraz Garfia.
+2023-11-30 08:36:14,128 - INFO - Successfully extracted information on ranked player number 3, player Daniil Medvedev.
+2023-11-30 08:36:14,206 - INFO - Successfully extracted information on ranked player number 4, player Jannik Sinner.
+2023-11-30 08:36:14,291 - INFO - Successfully extracted information on ranked player number 5, player Andrey Rublev.
+2023-11-30 08:36:14,401 - INFO - Successfully extracted information on ranked player number 6, player Stefanos Tsitsipas.
+2023-11-30 08:36:14,556 - INFO - Successfully extracted information on ranked player number 7, player Alexander Zverev.
+2023-11-30 08:36:14,707 - INFO - Successfully extracted information on ranked player number 8, player Holger Vitus Nodskov Rune.
+2023-11-30 08:36:14,833 - INFO - Successfully extracted information on ranked player number 9, player Hubert Hurkacz.
+2023-11-30 08:36:14,981 - INFO - Successfully extracted information on ranked player number 10, player Taylor Harry Fritz.
+2023-11-30 08:36:15,069 - INFO - Successfully extracted information on ranked player number 11, player Casper Ruud.
+2023-11-30 08:36:15,152 - INFO - Successfully extracted information on ranked player number 12, player Alex De Minaur.
+2023-11-30 08:36:15,239 - INFO - Successfully extracted information on ranked player number 13, player Tommy Paul.
+2023-11-30 08:36:15,386 - INFO - Successfully extracted information on ranked player number 14, player Grigor Dimitrov.
+2023-11-30 08:36:15,524 - INFO - Successfully extracted information on ranked player number 15, player Karen Khachanov.
+2023-11-30 08:36:15,671 - INFO - Successfully extracted information on ranked player number 16, player Frances Tiafoe.
+2023-11-30 08:36:15,800 - INFO - Successfully extracted information on ranked player number 17, player Ben Shelton.
+2023-11-30 08:36:15,895 - INFO - Successfully extracted information on ranked player number 18, player Cameron Norrie.
+2023-11-30 08:36:16,002 - INFO - Successfully extracted information on ranked player number 19, player Nicolas Jarry.
+2023-11-30 08:36:16,146 - INFO - Successfully extracted information on ranked player number 20, player Ugo Humbert.
