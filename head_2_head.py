@@ -6,6 +6,13 @@ from tabulate import tabulate
 
 
 def head_2_head(player1, player2):
+    """
+       Fetches head-to-head information between two players.
+
+       Parameters:
+       player1 (str): Name of the first player.
+       player2 (str): Name of the second player.
+    """
     driver = webdriver.Chrome()
     head2head_url = "https://www.ultimatetennisstatistics.com/headToHead"
     print("\nCharging page...")
@@ -44,6 +51,12 @@ def head_2_head(player1, player2):
 
 
 def print_stats(driver):
+    """
+      Prints statistics table for two players.
+
+      Parameters:
+      driver: WebDriver object.
+    """
     print("\nCharging table...")
     p1 = driver.find_element(By.CLASS_NAME, "text-left").text
     p2 = driver.find_element(By.CLASS_NAME, "text-right").text
@@ -99,15 +112,14 @@ def print_stats(driver):
 
 
 def menu():
+    """
+       Displays the welcome menu and prompts for player names.
+    """
     print("\n *** WELCOME TO HEAD 2 HEAD *** \n")
     player1_name = input("Please, enter Player 1 : ")
     player2_name = input("Please, enter Player 2 : ")
     head_2_head(player1_name, player2_name)
 
 
-def main():
-    menu()
-
-
 if __name__ == "__main__":
-    main()
+    menu()
