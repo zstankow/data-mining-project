@@ -3,6 +3,15 @@ import head_2_head
 
 
 def verify_input(user_input):
+    """
+    Validates user input for ATP Rankings menu options.
+
+    Args:
+        user_input (str): The user-provided input for the menu option.
+
+    Returns:
+        str: The valid input for the ATP Rankings menu.
+    """
     while True:
         if user_input not in ['head2head', 'ranking', '-h']:
             user_input = input("Invalid input: Please type either 'head2head' or 'ranking' or type '-h' for help. ")
