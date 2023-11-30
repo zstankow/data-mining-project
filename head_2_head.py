@@ -14,7 +14,6 @@ def head_2_head(player1, player2):
         logger.info(f"Successfully fetched URL: {head2head_url}")
     except Exception as e:
         logger.error(f"{e}: Failed to fetch URL: {head2head_url}")
-        driver.quit()
 
     try:
         player1_input = driver.find_element(By.ID, "player1")
@@ -45,51 +44,56 @@ def head_2_head(player1, player2):
 
 
 def print_stats(driver):
+    print("\nCharging table...")
     p1 = driver.find_element(By.CLASS_NAME, "text-left").text
     p2 = driver.find_element(By.CLASS_NAME, "text-right").text
-    time.sleep(2)
     w1 = driver.find_element(By.CLASS_NAME, "progress-bar.progress-bar-perf-w").text
-    time.sleep(2)
     w2 = driver.find_element(By.CLASS_NAME, "progress-bar.progress-bar-perf-l").text
     characteristics = driver.find_elements(By.CSS_SELECTOR, "tr")
 
-    data = [
-        ["Wins", w1, w2]
-    ]
+    data = [["Wins", w1, w2]]
 
     for char in characteristics:
         if 'Age' in char.text:
-            age1 = " ".join(char.text.split()[0:2])
-            age2 = " ".join(char.text.split()[-2:])
+            age1 = char.find_element(By.CLASS_NAME, "text-right").text
+            age2 = char.find_element(By.CLASS_NAME, "text-left").text
             data.append(["Age", age1, age2])
         if "Country" in char.text:
-            country1 = char.text.split()[0]
-            country2 = char.text.split()[-1]
+            country1 = char.find_element(By.CLASS_NAME, "text-right").text
+            country2 = char.find_element(By.CLASS_NAME, "text-left").text
             data.append(["Country", country1, country2])
         if "Height" in char.text:
-            h1 = " ".join(char.text.split()[0:2])
-            h2 = " ".join(char.text.split()[-2:])
+            h1 = char.find_element(By.CLASS_NAME, "text-right").text
+            h2 = char.find_element(By.CLASS_NAME, "text-left").text
             data.append(["Height", h1, h2])
         if "Weight" in char.text:
-            w1 = " ".join(char.text.split()[0:2])
-            w2 = " ".join(char.text.split()[-2:])
+            w1 = char.find_element(By.CLASS_NAME, "text-right").text
+            w2 = char.find_element(By.CLASS_NAME, "text-left").text
             data.append(["Weight", w1, w2])
         if "Plays" in char.text:
-            hand1 = char.text.split()[0]
-            hand2 = char.text.split()[-1]
+            hand1 = char.find_element(By.CLASS_NAME, "text-right").text
+            hand2 = char.find_element(By.CLASS_NAME, "text-left").text
             data.append(["Plays", hand1, hand2])
         if "Titles" in char.text:
-            t1 = char.text.split()[0]
-            t2 = char.text.split()[-1]
+            t1 = char.find_element(By.CLASS_NAME, "text-right").text
+            t2 = char.find_element(By.CLASS_NAME, "text-left").text
             data.append(["Titles", t1, t2])
         if "Grand Slams" in char.text:
-            gs1 = char.text.split()[0]
-            gs2 = char.text.split()[-1]
+            gs1 = char.find_element(By.CLASS_NAME, "text-right").text
+            gs2 = char.find_element(By.CLASS_NAME, "text-left").text
             data.append(["Grand Slams", gs1, gs2])
         if "Best Season" in char.text:
-            bs1 = char.text.split()[0]
-            bs2 = char.text.split()[-1]
+            bs1 = char.find_element(By.CLASS_NAME, "text-right").text
+            bs2 = char.find_element(By.CLASS_NAME, "text-left").text
             data.append(["Best Season", bs1, bs2])
+        if "Best Rank" in char.text:
+            br1 = char.find_element(By.CLASS_NAME, "text-right").text
+            br2 = char.find_element(By.CLASS_NAME, "text-left").text
+            data.append(["Best Rank", br1, br2])
+        if "Prize Money" in char.text:
+            pm1 = char.find_element(By.CLASS_NAME, "text-right").text
+            pm2 = char.find_element(By.CLASS_NAME, "text-left").text
+            data.append(["Prize Money", pm1, pm2])
 
     print("\n", tabulate(data, headers=["Characteristic", p1, p2], tablefmt="pretty"))
 
