@@ -7,7 +7,7 @@ def verify_input(user_input):
         if user_input not in ['head2head', 'ranking', '-h']:
             user_input = input("Invalid input: Please type either 'head2head' or 'ranking' or type '-h' for help. ")
         elif user_input == '-h':
-            print("head2head: type the name of 2 players and see which player is more likely to win!\n"
+            print("head2head: type the name of 2 players and see their stats side by side!\n"
                   "ranking: displays a list of top players and stats")
             user_input = input("Type either 'head2head' or 'ranking' or type '-h' for help. ")
         else:

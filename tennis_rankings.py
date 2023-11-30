@@ -4,16 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-
-
-
-#
-# logging.basicConfig(
-#     filename='tennis.log',
-#     level=logging.INFO,
-#     format='%(asctime)s - %(levelname)s - %(message)s',
-#     datefmt='%Y-%m-%d %H:%M:%S'
-# )
+from tabulate import tabulate
 
 
 def get_players_info(driver, display_num):
@@ -48,10 +39,10 @@ def get_players_info(driver, display_num):
         logger.error(f"{e}: Failed to fetch {display_num} rows.")
         driver.quit()
         return []
-    return get_table(player_rows)
+    return get_tabulated_data(player_rows)
 
 
-def get_table(player_rows):
+def get_tabulated_data(player_rows):
     players_info = []
     for row in player_rows:
         try:
@@ -64,13 +55,15 @@ def get_table(player_rows):
                 '+/- position': cells[4].text,
                 '+/- points': cells[5].text
             }
-            players_info.append(row_data)
-            logger.info(f"Successfully extracted information on ranked player number "
-                        f"{row_data['ranking']}, player {row_data['name']}.")
+            players_info.append([row_data['ranking'], row_data['best rank'],
+                                row_data['name'], row_data['country'],
+                                row_data['+/- position'], row_data['+/- points']])
         except Exception as e:
             logger.info(f"{e}: Failed to extract information on player.")
 
-    return players_info
+    print("\n", tabulate(players_info, headers=[
+        "Current Ranking", "Best Ranking", "Name", "Country", "+/- Positions", "+/- Points"
+                                ], tablefmt="pretty"))
 
 
 def verify_input(num):
@@ -82,13 +75,6 @@ def verify_input(num):
         else:
             print("Just a moment...\n")
             return num
-
-
-def print_ranking(players_info):
-    for player in players_info:
-        print(f"{player['ranking']}. {player['name']}, Country: {player['country']}, "
-              f"Best Rank: {player['best rank']}, Position Gains/Losses: {player['+/- position']}, "
-              f"Points Gains/Losses: {player['+/- points']}")
 
 
 def menu():
@@ -109,7 +95,7 @@ def main():
         logger.error(f"{e}: Failed to fetch URL: {player_ranking_url}")
         driver.quit()
 
-    print_ranking(get_players_info(driver, display))
+    get_players_info(driver, display)
     driver.quit()
 
 
