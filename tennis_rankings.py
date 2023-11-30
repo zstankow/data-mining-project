@@ -31,7 +31,7 @@ def get_players_info(driver, display_num):
         option_display.click()
 
         # Extracts table
-        time.sleep(1)
+        time.sleep(2)
         player_rows = driver.find_elements_by_css_selector('tbody tr')
         logger.info(f"Successfully fetched {display_num} rows from table.")
 
@@ -58,6 +58,7 @@ def get_tabulated_data(player_rows):
             players_info.append([row_data['ranking'], row_data['best rank'],
                                 row_data['name'], row_data['country'],
                                 row_data['+/- position'], row_data['+/- points']])
+            logger.info(f"Player {row_data['name']} added to list.")
         except Exception as e:
             logger.info(f"{e}: Failed to extract information on player.")
 

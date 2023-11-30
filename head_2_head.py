@@ -41,6 +41,7 @@ def head_2_head(player1, player2):
         return
 
     print_stats(driver)
+    driver.quit()
 
 
 def print_stats(driver):
