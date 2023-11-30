@@ -43,6 +43,7 @@ def head_2_head(player1, player2):
 
 
 def print_stats(driver):
+    print("\nCharging table...")
     p1 = driver.find_element(By.CLASS_NAME, "text-left").text
     p2 = driver.find_element(By.CLASS_NAME, "text-right").text
     w1 = driver.find_element(By.CLASS_NAME, "progress-bar.progress-bar-perf-w").text
