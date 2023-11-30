@@ -1,11 +1,11 @@
-# Webscraping Tennis Rankings
+# __Webscraping Tennis Rankings__
 
 This Python script retrieves ATP tennis player rankings from the 
 Ultimate Tennis Statistics website and displays the information based on user input.
 
 Initially, our approach involved using the `requests` and `BeautifulSoup` libraries to parse data from tables. However, we quickly realized that the target website employs dynamic content, prompting a switch to the more suitable `selenium` library.
 
-## Common Issue and Solution
+## Common Issues and Solution
 
 During the debugging phase, we encountered a common issue where the script could extract table data successfully, but when executed, the driver closed before parsing the HTML. To address this, we employed a combination of `time.sleep()`, `WebDriverWait`, and `expected_conditions` modules.
 
